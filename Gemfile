@@ -54,3 +54,5 @@ gem 'font-awesome-rails'
 # forms in vanilla rails are kinda poopy, this gem tries to fix that
 gem 'simple_form'
 
+# user managment made simpple
+gem 'devise'
