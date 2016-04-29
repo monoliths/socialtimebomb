@@ -51,3 +51,6 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 # cool icons 
 gem 'font-awesome-rails'
 
+# forms in vanilla rails are kinda poopy, this gem tries to fix that
+gem 'simple_form'
+
