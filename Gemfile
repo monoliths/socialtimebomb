@@ -48,7 +48,7 @@ end
 # bootstrap for styling
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
-# cool icons 
+# cool icons
 gem 'font-awesome-rails'
 
 # forms in vanilla rails are kinda poopy, this gem tries to fix that
@@ -56,3 +56,6 @@ gem 'simple_form'
 
 # user managment made simpple
 gem 'devise'
+
+# allow authentication
+gem 'dotenv-rails'
