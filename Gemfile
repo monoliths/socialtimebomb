@@ -60,3 +60,4 @@ gem 'devise'
 # allow authentication
 gem 'dotenv-rails'
 gem 'omniauth-twitter'
+gem 'omniauth-facebook'
