@@ -61,3 +61,6 @@ gem 'devise'
 gem 'dotenv-rails'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
+
+# gem to help with date validations
+gem 'validates_timeliness', '~>3.0'
