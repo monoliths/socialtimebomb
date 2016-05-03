@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :connections, only: [:destroy]
 
   devise_for :users, controllers: {registrations: 'registrations'}
+  get 'auth/failure', to: 'connections#omniauth_failure'
   get 'pages/home'
   get 'dashboard', to: 'pages#dashboard'
   root 'pages#home'
