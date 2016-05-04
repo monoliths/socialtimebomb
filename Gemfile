@@ -72,3 +72,10 @@ gem 'momentjs-rails', '~> 2.9',  :github => 'derekprior/momentjs-rails'
 # twitter and facebook direct posting
 gem 'twitter'
 gem 'koala'
+
+# worker for our rails jobs
+gem 'delayed_job_active_record'
+
+
+# this is a small engine that allows us to track background jobs
+gem 'delayed-web', github: 'thebestday/delayed-web'

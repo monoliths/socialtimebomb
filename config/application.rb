@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module SocialTimeBomb
   class Application < Rails::Application
+    config.assets.precompile << 'delayed/web/application.css'
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -22,5 +23,8 @@ module SocialTimeBomb
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # here we are basically telling active record jobs to connect to the delayed_job engine
+    config.active_job.queue_adapter = :delayed_job
   end
 end
