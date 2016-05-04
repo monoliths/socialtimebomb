@@ -64,3 +64,11 @@ gem 'omniauth-facebook'
 
 # gem to help with date validations
 gem 'validates_timeliness', '~>3.0'
+
+# datetime picker
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
+gem 'momentjs-rails', '~> 2.9',  :github => 'derekprior/momentjs-rails'
+
+# twitter and facebook direct posting
+gem 'twitter'
+gem 'koala'
