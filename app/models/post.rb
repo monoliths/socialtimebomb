@@ -5,8 +5,33 @@ class Post < ActiveRecord::Base
   validates_presence_of :scheduled_at
   validates_length_of :content, maximum: 140, message: 'Less than 140 characters please.'
   validates_datetime :scheduled_at, :on => :create, :on_or_after => Time.zone.now
+  after_create :schedule
 
+  # this will schedule the job, the job "perform" calls "display" to post
+  def schedule
+    begin
+        ScheduleJob.set(wait_until: scheduled_at).perform_later(self)
+        self.update_attributes(state: "scheduled")
+    rescue Exception => e
+      self.update_attributes(state: "scheduled error", error: e.message)
+    end
 
+  end
+
+  def display
+    begin
+      if twitter == true
+        to_twitter
+      end
+      if facebook == true
+        to_facebook
+      end
+      self.update_attributes(state: "posted")
+    rescue Exception => e
+      self.update_attributes(state: "posting failed", error: e.message)
+    end
+
+  end
 
   def to_twitter
     client = Twitter::REST::Client.new do |config|
@@ -22,4 +47,5 @@ class Post < ActiveRecord::Base
     graph = Koala::Facebook::API.new(self.user.facebook.oauth_token)
     graph.put_connections("me", "feed", message: self.content)
   end
+
 end
