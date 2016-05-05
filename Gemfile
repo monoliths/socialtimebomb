@@ -79,3 +79,6 @@ gem 'delayed_job_active_record'
 
 # this is a small engine that allows us to track background jobs
 gem 'delayed-web', github: 'thebestday/delayed-web'
+
+# easily add pagination to our list of posts
+gem 'will_paginate'
