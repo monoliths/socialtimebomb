@@ -3,17 +3,20 @@
   <div class="panel-heading">
     <% if post.facebook == true %> <span class="label label-primary"></span> <% end %>
     <% if post.twitter == true %> <span class="label label-primary"></span> <% end %>
-    Scheduled on <%= post.scheduled_at %>
+    <% if post.state == 'scheduled' %>
+      Scheduled for <%= time_ago_in_words(post.scheduled_at) %> from now.
+    <% else %>
+      Processed <%= time_ago_in_words(post.scheduled_at) %> ago.
+    <% end %>
   </div>
   <!-- Body -->
   <div class="panel-body">
     <%= post.content %>
   </div>
   <div class="panel-footer">
-
-      <%= post.state.capitalize %>
+      <%= link_to 'More Info', post_path(id: post.id) %>
       <div class="pull-right">
-       <%= link_to 'cancel post', cancel_post_path(post), method: :put if post.state == 'scheduled' %>
+       <%= link_to 'Quick Cancel', cancel_post_path(post), method: :put if post.state == 'scheduled' %>
       </div>
 
   </div>

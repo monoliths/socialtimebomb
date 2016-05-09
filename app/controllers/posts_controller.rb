@@ -27,6 +27,14 @@ class PostsController < ApplicationController
     redirect_to dashboard_path, notice: "Post was successfully cancled"
   end
 
+  def show
+    @post = Post.find_by(id: params[:id])
+    if current_user !=  @post.user
+			flash[:danger] = "Stop trying to view someone elses post!"
+			redirect_to root_path
+		end
+  end
+
   private
 
   def post_params
@@ -36,4 +44,7 @@ class PostsController < ApplicationController
   def set_post
     @post = Post.find(params[:id])
   end
+
+
+
 end

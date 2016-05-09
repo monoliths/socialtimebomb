@@ -1,0 +1,24 @@
+<div class="col-md-6 col-md-offset-3 center">
+<h3 class="text-center">Detailed Post Info</h3>
+  <div class="panel panel-info">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">Scheduled For: <%= @post.scheduled_at %></h3>
+	  </div>
+	  <div class="panel-body">
+	  	<p>Content: <%= @post.content %></p>
+	  	<p>Created: <%= @post.created_at %></p>
+	  	<p>State: <%= @post.state.capitalize %></p>
+	  	<p>Twitter: <%= @post.twitter ?  "Yes" : "No" %></p>
+	  	<p>Facebook: <%= @post.facebook ? "Yes" : "No" %></p>
+	  	<%= link_to 'Back', root_path, class: "btn btn-info btn-sm" %>
+	  	<%= link_to 'Cancel Post', cancel_post_path(@post),
+        data: {confirm: "This post will be canceled, are you sure?"},
+        class: "btn btn-sm btn-danger pull-right",
+        method: :put if @post.state == "scheduled" %>
+      	<%= link_to 'Delete Post', post_path(params[:id]),
+          data: {confirm: "This post will be deleted, are you sure?"},
+          class: "btn btn-sm btn-danger pull-right",
+          method: :delete unless @post.state == "scheduled" %>
+	  </div>
+	</div>
+</div>
