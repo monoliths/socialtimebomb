@@ -88,5 +88,8 @@ gem 'pg'
 gem 'rails_12factor', group: :production
 
 
+# puma webserver is good
+gem 'puma'
+
 # specified ruby version for heroku
 ruby "2.3.0"

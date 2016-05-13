@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {registrations: 'registrations'}
 
-
+  get 'about', to: 'pages#about'
   get 'auth/failure', to: 'connections#omniauth_failure'
   get 'pages/home'
   get 'dashboard', to: 'pages#dashboard'
